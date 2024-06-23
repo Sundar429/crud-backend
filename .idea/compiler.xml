@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="crud_backend.crud_backend.main~1" target="17" />
-      <module name="crud_backend.crud_backend.test~1" target="17" />
+      <module name="crud_backend.crud_backend.main" target="17" />
+      <module name="crud_backend.crud_backend.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
