@@ -10,7 +10,7 @@ public class WebMvcConfigurer {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/users").allowedOrigins("http://localhost:9000","https://crud-frontend-sandy.vercel.app");
+                registry.addMapping("/users").allowedOrigins("http://localhost:9090","https://crud-frontend-sandy.vercel.app");
             }
         };
     }
