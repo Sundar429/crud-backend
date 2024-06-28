@@ -3,7 +3,7 @@ ARG JAR_FILE=build/libs/crud_backend-0.0.1-SNAPSHOT.jar app.jar
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 # Example Dockerfile
-FROM sundar429/Repositories/crud-image:latest
+FROM /layers/sundar429/Repositories/crud-image/latest/image
 
 # Ensure the directory exists inside the container
 RUN mkdir -p /app/libs
