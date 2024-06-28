@@ -9,9 +9,6 @@ COPY . .
 
 # Stage 2: Create the runtime image
 FROM docker.io/sundar429/crud-image:latest
-COPY --from=build /app/build/libs/*.jar /app/app.jar
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/crud_backend-0.0.1-SNAPSHOT.jar
 
-# Check the file in the final image
-RUN ls -l /app
-
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/crud_backend-0.0.1-SNAPSHOT.jar"]
