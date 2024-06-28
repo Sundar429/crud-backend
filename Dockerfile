@@ -1,14 +1,10 @@
+# Stage 1: Build the application
+FROM gradle:jdk17 as build
+WORKDIR /app
+COPY . .
+RUN gradle build
+
+# Stage 2: Run the application
 FROM openjdk:17
-ARG JAR_FILE=build/libs/crud_backend-0.0.1-SNAPSHOT.jar app.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
-# Example Dockerfile
-FROM sundar429/crud-image:latest
-
-# Ensure the directory exists inside the container
-RUN mkdir -p /app/libs
-
-# Copy files from host to container
-COPY ./build /libs
-
-# Additional steps as needed
+COPY --from=build /app/build/libs/crud_backend-0.0.1-SNAPSHOT.jar /app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
