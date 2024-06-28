@@ -6,5 +6,5 @@ CMD /bin/sh
 
 # Stage 2: Create the runtime image
 FROM openjdk:17
-COPY --from=build /app/build/libs/*.jar /app.jar
+COPY --from=build /build/libs/*.jar /app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
