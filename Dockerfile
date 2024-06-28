@@ -11,5 +11,4 @@ COPY . .
 FROM docker.io/sundar429/crud-image:latest
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} app.jar
-
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
