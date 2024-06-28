@@ -1,23 +1,23 @@
 # Stage 1: Build the application
-FROM gradle:jdk17 as build
+FROM mcr.microsoft.com/windows/servercore:ltsc2022 as build
 WORKDIR /app
 
-# Copy the Gradle build files first to leverage caching
-# COPY build.gradle settings.gradle /app/
+# Copy Gradle build files
+COPY build.gradle settings.gradle /app/
 
-# # Check if these files exist to debug
-# RUN ls -al /app/
+# Use PowerShell to list files for debugging
+RUN powershell -Command "Get-ChildItem -Force"
 
-# # Download dependencies only
-# RUN gradle --no-daemon dependencies
+# Copy the rest of the application code
+COPY . .
 
-# # Copy the rest of the application code
-# COPY . .
+# Run Gradle build
+RUN powershell -Command "gradle build"
 
-# # Build the application
-# RUN gradle --no-daemon build
+# Verify if the build/libs directory and JAR file exist
+RUN powershell -Command "Get-ChildItem -Force build/libs"
 
 # Stage 2: Create the runtime image
-FROM openjdk:17
-COPY --from=build /app/build/libs/crud_backend-0.0.1-SNAPSHOT.jar /app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+FROM mcr.microsoft.com/windows/servercore:ltsc2022
+COPY --from=build /app/build/libs/*.jar /app/app.jar
+ENTRYPOINT ["powershell", "-Command", "java -jar /app/app.jar"]
