@@ -4,7 +4,7 @@
 FROM openjdk:17 AS build
 WORKDIR /app
 COPY . .
-RUN ./gradlew build
+RUN ./gradlew.bat
 
 # Stage 2: Create the runtime image
 FROM docker.io/sundar429/crud-image:latest
