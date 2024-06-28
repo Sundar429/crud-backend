@@ -9,6 +9,7 @@ COPY . .
 
 # Stage 2: Create the runtime image
 FROM docker.io/sundar429/crud-image:latest
-# Check the following line
-COPY --from=build /build/libs/*.jar app.jar
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} app.jar
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
