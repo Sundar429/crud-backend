@@ -9,6 +9,6 @@ FROM sundar429/crud-image:latest
 RUN mkdir -p /app/libs
 
 # Copy files from host to container
-COPY ./libs /app/libs
+COPY ./build /libs
 
 # Additional steps as needed
