@@ -1,23 +1,23 @@
 # Stage 1: Build the application
-FROM mcr.microsoft.com/windows/servercore:ltsc2022 as build
+FROM gradle:jdk17 as build
 WORKDIR /app
 
 # Copy Gradle build files
 COPY build.gradle settings.gradle /app/
 
-# Use PowerShell to list files for debugging
-RUN powershell -Command "Get-ChildItem -Force"
+# Download dependencies, leveraging Docker caching
+RUN gradle --no-daemon dependencies
 
 # Copy the rest of the application code
 COPY . .
 
-# Run Gradle build
-RUN powershell -Command "gradle build"
+# Build the application
+RUN gradle --no-daemon build
 
-# Verify if the build/libs directory and JAR file exist
-RUN powershell -Command "Get-ChildItem -Force build/libs"
+# Check if the build/libs directory and the JAR file exist
+RUN ls -al /app/build/libs
 
 # Stage 2: Create the runtime image
-FROM mcr.microsoft.com/windows/servercore:ltsc2022
-COPY --from=build /app/build/libs/*.jar /app/app.jar
-ENTRYPOINT ["powershell", "-Command", "java -jar /app/app.jar"]
+FROM openjdk:17
+COPY --from=build /app/build/libs/*.jar /app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
