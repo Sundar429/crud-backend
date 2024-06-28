@@ -1,10 +1,11 @@
-FROM gradle:jdk17
+# Dockerfile
+# Stage 1: Build the application
+FROM openjdk:17 AS build
 WORKDIR /app
 COPY . .
-CMD /bin/sh
-
+RUN ./gradlew build
 
 # Stage 2: Create the runtime image
-FROM openjdk:17
-COPY --from=build /build/libs/*.jar /app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+FROM docker.io/library/build:latest
+COPY --from=build /app/build/libs/*.jar /app/app.jar
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
