@@ -1,9 +1,9 @@
 package com.sundar_java.crud_backend_app.controller;
 
 
-import com.sundar_java.crud_backend.exception.UserNotFoundException;
-import com.sundar_java.crud_backend.model.User;
-import com.sundar_java.crud_backend.repository.UserRepository;
+import com.sundar_java.crud_backend_app.exception.UserNotFoundException;
+import com.sundar_java.crud_backend_app.model.User;
+import com.sundar_java.crud_backend_app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

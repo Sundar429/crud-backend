@@ -1,6 +1,6 @@
-package com.sundar_java.crud_backend.repository;
+package com.sundar_java.crud_backend_app.repository;
 
-import com.sundar_java.crud_backend.model.User;
+import com.sundar_java.crud_backend_app.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User,Long> {
