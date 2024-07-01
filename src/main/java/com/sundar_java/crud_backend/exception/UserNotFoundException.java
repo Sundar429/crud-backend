@@ -1,4 +1,4 @@
-package com.sundar_java.crud_backend_app.exception;
+package com.sundar_java.crud_backend.exception;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(Long id){

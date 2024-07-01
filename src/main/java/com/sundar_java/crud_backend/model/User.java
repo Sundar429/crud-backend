@@ -1,4 +1,4 @@
-package com.sundar_java.crud_backend_app.model;
+package com.sundar_java.crud_backend.model;
 
 
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.sundar_java.crud_backend_app;
+package com.sundar_java.crud_backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,12 +16,11 @@ public class CrudBackendApplication {
 
 
 	}
-	@GetMapping("/welecome")
-	public String sayHello(){
-		System.out.println("In the Spring boot main");
-		return "Hello Welecome to sprng boot world";
+	@GetMapping("/welcome")
+	public String sayHello() {
+		System.out.println("In the Spring Boot main");
+		return "Hello, Welcome to the Spring Boot world";
 	}
-
 
 
 
