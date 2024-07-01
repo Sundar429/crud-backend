@@ -3,5 +3,5 @@
 #
 #
 FROM openjdk:17
-COPY build/libscrud_backend-0.0.1-SNAPSHOT.jar crud_backend-0.0.1-SNAPSHOT.jar
+COPY build/libs/crud_backend-0.0.1-SNAPSHOT.jar crud_backend-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java","-jar","crud_backend-0.0.1-SNAPSHOT.jar"]
