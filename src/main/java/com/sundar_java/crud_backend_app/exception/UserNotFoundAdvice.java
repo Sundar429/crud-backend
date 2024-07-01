@@ -1,4 +1,4 @@
-package com.sundar_java.crud_backend.exception;
+package com.sundar_java.crud_backend_app.exception;
 
 
 import org.springframework.http.HttpStatus;

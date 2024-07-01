@@ -1,4 +1,4 @@
-package com.sundar_java.crud_backend.controller;
+package com.sundar_java.crud_backend_app.controller;
 
 
 import com.sundar_java.crud_backend.exception.UserNotFoundException;
